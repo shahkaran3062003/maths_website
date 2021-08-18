@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Maths calculator</title>
+</head>
+
+<body>
+	<center>
+		<h1>Maths Calculator</h1>
+
+		<form action="" method="POST">
+			{% csrf_token %}
+			Enter Total Number of Rows:
+			<input type="text" name="row" required>
+			<br>
+			<br>
+
+			<input type="submit" name="rows_check">
+			<br>
+		</form>
+
+		<form action="" method="POST">
+
+			{% csrf_token %}
+			{% if is_rows %}
+			<br>
+			<table style="text-align: center;" border="5">
+				<tr>
+					<td><b>S NO.</b></td>
+					<td>
+						<b> X </b>
+					<td>
+						<b> Y </b>
+					</td>
+				</tr>
+
+				{% for i in row%}
+
+				<tr>
+					<td> {{i}} </td>
+					<td>
+						<input type="text" name="x{{ i }}" size="4" required>
+					</td>
+					<td>
+						<input type="text" name="y{{ i }}" size="4" required>
+					</td>
+				</tr>
+
+
+				{% endfor %}
+
+			</table>
+
+			<br>
+			Select Method :
+			<select name="type">
+				<option value="simple">Forward and Backward Interpolation</option>
+				<option value="Divided">Divided Differences</option>
+				<option value="difference"> Differentiation of Linear Equation</option>
+			</select>
+			<br>
+			Enter X point to find :<input type="text" name="point" size="4" required>
+
+			<br>
+			<input type="submit" name="all_details">
+			{% endif %}
+		</form>
+
+		<br>
+
+
+		{% if is_detail %}
+
+
+		<table border="5">
+
+
+			{% for i in table %}
+
+			<tr>
+
+				{% for j in i %}
+
+				<td>
+					{{j}}
+				</td>
+
+				{% endfor %}
+			</tr>
+
+
+			{% endfor %}
+
+
+		</table>
+
+		{% endif %}
+
+	</center>
+</body>
+
+</html>
