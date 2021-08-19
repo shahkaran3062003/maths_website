@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 
 # Create your views here.
@@ -64,7 +64,6 @@ def main(request):
                 for j in range(row-1, i-1, -1):
                     table[i][j] = table[i-1][j]-table[i-1][j-1]
                 for j in range(i-1+1, 0, -1):
-                    print("working")
                     table[i][j-1] = '-'
 
             table_ = []
