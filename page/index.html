@@ -76,7 +76,15 @@
 		{% if is_detail %}
 
 
-		<table border="5">
+		<table border="5" style="text-align: center;">
+
+			<tr>
+				{% for i in column %}
+
+				<td style="width: 100px;"> <b> {{ i }} </b> </td>
+
+				{% endfor %}
+			</tr>
 
 
 			{% for i in table %}
@@ -85,7 +93,7 @@
 
 				{% for j in i %}
 
-				<td>
+				<td style="width: 100px;">
 					{{j}}
 				</td>
 
@@ -98,7 +106,26 @@
 
 		</table>
 
+		<p>
+			<b>
+
+				{{text}}
+			</b>
+
+		</p>
+
+
+		<b>
+			{{u_text}}
+			<br>
+			{{ans_text}}
+		</b>
+
+
 		{% endif %}
+
+
+
 
 	</center>
 </body>
