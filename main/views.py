@@ -290,8 +290,6 @@ def main(request):
                 is_on_div) else f"Here, X = {point} lies between {x} & {x+1} point therefor, we consider newton's Divided Method at {x} point"
             u_text = ""
             ans_text = f"ANS = {ans}"
-            # return render(request, 'index.html', {"is_rows": is_rows, "is_detail": is_detail, "row": range(1, row+1), "table": table_,
-            #                                       "column": coloum[:row+1], "text": text, "u_text": u_text, "ans_text": ans_text})
 
             return render(request, 'index.html', {"is_rows": is_rows, "is_detail": is_detail, "row": range(1, row+1), "table": table_, "column": coloum[:row+1],
                                                   "text": text, "u_text": u_text, "ans_text": ans_text})
