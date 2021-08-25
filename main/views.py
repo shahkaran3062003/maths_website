@@ -71,6 +71,7 @@ def main(request):
                         is_b = True
                         x = i+2
                         break
+            print(x)
 
             if(method != "Divided"):
 
@@ -151,11 +152,14 @@ def main(request):
                         if(point in x_y[0]):
                             ans = 0
                             for i in range(1, row):
-                                temp = table_[x-1][i+1]/i
-                                if(i % 2 == 0):
-                                    ans = ans-temp
+                                if(table_[x-1][i+1] == '-'):
+                                    continue
                                 else:
-                                    ans = ans+temp
+                                    temp = table_[x-1][i+1]/i
+                                    if(i % 2 == 0):
+                                        ans = ans-temp
+                                    else:
+                                        ans = ans+temp
                             ans = round(ans/h, 3)
                             text = f"Here, X = {point} lies on {x} point therefor, we consider newton's Forward Method at {x} point"
                             u_text = ""
@@ -199,6 +203,7 @@ def main(request):
                             for i in range(len(table)):
                                 temp.append(table[i][j])
                             table_.append(temp)
+                        print(table_)
 
                         coloum = ['X', 'Y', '∇Y', '∇²Y', '∇³Y',
                                   '∇⁴Y', '∇⁵Y', '∇⁶Y', '∇⁷Y', '∇⁸Y', '∇⁹Y']
@@ -222,9 +227,13 @@ def main(request):
                         elif(method == 'difference'):
                             if(point in x_y[0]):
                                 ans = 0
+                                print("yes")
                                 for i in range(1, row):
-                                    temp = table_[x-1][i+1]/i, 2
-                                    ans = ans+temp
+                                    if(table_[x-1][i+1] == '-'):
+                                        continue
+                                    else:
+                                        temp = table_[x-1][i+1]/i
+                                        ans = ans+temp
                                 ans = ans/h
                                 ans = round(ans, 3)
                                 text = f"Here, X = {point} lies on {x} point therefor, we consider newton's Backward Method at {x} point"
@@ -301,7 +310,7 @@ def main(request):
             is_rows = False
             is_detail = False
             return render(request, 'index.html')
-    except Exception as e:
+    except:
         is_rows = False
         is_detail = False
         print("messaged padded")
